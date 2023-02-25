@@ -2,38 +2,33 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import runner.RunTest;
 import support.Utils;
 
-public class CadastroPage extends Utils {
 
-    WebDriver driver;
-    public CadastroPage(WebDriver driver) {
-        this.driver = driver;
-    }
+public class CadastroPage extends RunTest {
 
     private By email_page = By.id("email");
 
     public void clicarParaCadastro() {
-        driver.findElement(By.cssSelector("#top_header > div > div > div:nth-child(2) > div > ul > li:nth-child(2) > a")).click();
+        getDriver().findElement(By.cssSelector("#top_header > div > div > div:nth-child(2) > div > ul > li:nth-child(2) > a")).click();
     }
 
     public void preencherCadastro() {
-        waitElementBePresent(By.id("user"), 10);
-        driver.findElement(By.id("user")).sendKeys("Testes");
-        driver.findElement(email_page).sendKeys(getRandomEmail());
-        driver.findElement(By.id("password")).sendKeys("testes123");
+        Utils.waitElementBePresent(By.id("user"), 10);
+        getDriver().findElement(By.id("user")).sendKeys("Testes");
+        getDriver().findElement(email_page).sendKeys(Utils.getRandomEmail());
+        getDriver().findElement(By.id("password")).sendKeys("testes123");
     }
 
     public void clicarEmCadastrar() {
-        driver.findElement(By.id("btnRegister")).click();
+        getDriver().findElement(By.id("btnRegister")).click();
     }
 
     public void confirmarCadastro() {
-        waitElementBePresent(By.id("swal2-title"), 20);
-        String texto_confirmacao = driver.findElement(By.id("swal2-title")).getText();
-        Assert.assertEquals("o cadastro não foi finalizado!", "Cadastro realizado!", texto_confirmacao);
-        System.out.println(texto_confirmacao);
+        Utils.waitElementBePresent(By.id("swal2-title"), 20);
+        String textoLoginSucesso = getDriver().findElement(By.id("swal2-title")).getText();
+        Assert.assertEquals("Os textos não são iguais!", "Cadastro realizado!", textoLoginSucesso);
     }
 
 

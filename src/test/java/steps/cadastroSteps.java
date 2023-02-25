@@ -2,13 +2,12 @@ package steps;
 
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
-import org.openqa.selenium.By;
 import pages.CadastroPage;
 import runner.RunTest;
 
 public class cadastroSteps extends RunTest {
 
-    CadastroPage cadastroPage = new CadastroPage(driver);
+    CadastroPage cadastroPage = new CadastroPage();
 
     @Quando("^eu clico em cadastro$")
     public void eu_clico_em_cadastro() {

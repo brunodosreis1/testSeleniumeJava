@@ -1,22 +1,20 @@
 package support;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import runner.RunTest;
-
 import java.util.Random;
 
 
 public class Utils extends RunTest {
 
-    public void waitElementBePresent(By element , int tempo) {
-        WebDriverWait wait = new WebDriverWait(driver, tempo);
+    public static void waitElementBePresent(By element, int tempo) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), tempo);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public String getRandomEmail() {
+    public static String getRandomEmail() {
 
         String email_init = "teste_";
         String email_final = "@hotmail.com";

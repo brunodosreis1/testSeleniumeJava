@@ -2,14 +2,12 @@ package steps;
 
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import pages.ComprasPage;
 import runner.RunTest;
 
 public class FazerComprasSteps extends RunTest {
 
-    ComprasPage comprasPage = new ComprasPage(driver);
+    ComprasPage comprasPage = new ComprasPage();
 
     @Dado("^que eu estou no carrinho de compras$")
     public void que_eu_estou_no_carrinho_de_compras() {
@@ -32,8 +30,8 @@ public class FazerComprasSteps extends RunTest {
 
     @Então("^clico em salvar$")
     public void clico_em_salvar() throws InterruptedException {
-        comprasPage.scrollDown();
-        comprasPage.clicarEmSalvar();
+       comprasPage.aguardarTela();
+       comprasPage.clicarEmSalvar();
     }
 
     @Então("^escolho a forma de pagamento$")
@@ -51,9 +49,5 @@ public class FazerComprasSteps extends RunTest {
         comprasPage.confirmarCompra();
     }
 
-    public void scrollDown() throws InterruptedException {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollTo(0, 10000)");
-        Thread.sleep(2000);
-    }
-}
+        }
+
